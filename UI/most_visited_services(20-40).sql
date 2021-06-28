@@ -1,8 +1,7 @@
-SELECT COUNT(*), ID_AREA
+SELECT COUNT(*), Service_ID
 FROM Client
-INNER JOIN Visits ON Client.NFC_ID = Visits.NFC_ID
-WHERE Client.date_of_birth BETWEEN date_add(CURDATE(), INTERVAL -60 YEAR) AND date_add(CURDATE(), INTERVAL -40 YEAR) 
-AND Visits.Visit_date > date_add(CURDATE(), INTERVAL -1 YEAR)
-GROUP BY ID_AREA
+INNER JOIN service_charge ON Client.NFC_ID = service_charge.NFC_ID
+WHERE Client.date_of_birth BETWEEN date_add(CURDATE(), INTERVAL -40 YEAR) AND date_add(CURDATE(), INTERVAL -20 YEAR) 
+GROUP BY Service_ID
 ORDER BY COUNT(*) DESC
 ;
